@@ -1,0 +1,51 @@
+2020/12/06 10:57:16 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"info","message":"[eddycjy blog-service]: go programming-tour-book/%!s(MISSING)","time":1607223436554253838}
+2020/12/06 10:57:50 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"info","message":"[eddycjy blog-service]: go programming-tour-book/%!s(MISSING)","time":1607223470931172433}
+2020/12/09 06:41:20 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"app.BindAndValid errs: []","time":1607467280647440881}
+2020/12/09 06:43:29 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"app.BindAndValid errs: []","time":1607467409018623120}
+2020/12/09 06:44:08 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"app.BindAndValid errs: []","time":1607467448454238093}
+2020/12/10 11:48:27 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"[app.BindAndValid errs: %v CreateBy为必填字段]","time":1607572107853459838}
+2020/12/10 11:48:28 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607572108073943611}
+2020/12/10 11:49:10 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607572150798819595}
+2020/12/10 12:54:25 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607576065525425014}
+2020/12/10 12:55:28 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607576128534041436}
+2020/12/10 12:59:44 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607576384822304877}
+2020/12/10 13:01:57 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607576517484608507}
+2020/12/10 13:03:00 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607576580334886151}
+2020/12/10 14:48:57 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607582937094144193}
+2020/12/10 15:00:32 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607583632156594875}
+2020/12/10 15:00:48 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607583648221427991}
+2020/12/10 15:05:48 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607583948440517388}
+2020/12/10 15:27:54 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607585274136658865}
+2020/12/10 15:40:51 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607586051494866921}
+2020/12/10 15:41:28 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607586088734173412}
+2020/12/10 15:41:44 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607586104758344014}
+2020/12/10 15:44:54 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607586294775617315}
+2020/12/10 15:45:53 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607586353662478821}
+2020/12/10 15:49:25 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607586565799073812}
+2020/12/10 15:56:15 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607586975169152279}
+2020/12/10 16:48:29 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607590109473235285}
+2020/12/10 17:26:26 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1146: Table 'blog_service.tag' doesn't exist]","time":1607592386306503552}
+2020/12/10 18:15:33 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1366: Incorrect integer value: '�' for column 'created_on' at row 1]","time":1607595333090902932}
+2020/12/10 20:22:40 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1366: Incorrect integer value: '�' for column 'created_on' at row 1]","time":1607602960284988899}
+2020/12/10 20:24:23 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1366: Incorrect integer value: '�' for column 'created_on' at row 1]","time":1607603063584924316}
+2020/12/10 23:50:12 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.CreateTag err: [Error 1366: Incorrect integer value: '' for column 'is_del' at row 1]","time":1607615412463633993}
+2021/01/28 10:06:34 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"app.BindAndValid errs : [ID为必填字段]","time":1611799594324288405}
+2021/01/28 10:09:41 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.GetArticle err : [Error 1054: Unknown column 'id_del' in 'where clause']","time":1611799781964627674}
+2021/01/28 10:10:52 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.GetArticle err : [Error 1054: Unknown column 'id_del' in 'where clause']","time":1611799852294691168}
+2021/01/28 10:11:26 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.GetArticle err : [Error 1054: Unknown column 'id_del' in 'where clause']","time":1611799886288008726}
+2021/01/28 10:13:56 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"app.BindAndValid errs : [ID为必填字段]","time":1611800036297165309}
+2021/01/28 10:14:42 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"app.BindAndValid errs : [ID为必填字段]","time":1611800082331728039}
+2021/01/28 10:15:18 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"app.BindAndValid errs : [ID为必填字段]","time":1611800118416991667}
+2021/01/28 10:18:43 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"app.BindAndValid errs : [ID为必填字段]","time":1611800323638524439}
+2021/01/28 10:20:51 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.UpdateArticle err : [Error 1054: Unknown column 'id_del' in 'where clause']","time":1611800451758496369}
+2021/01/28 10:21:27 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"app.BindAndValid errs : [ID为必填字段]","time":1611800487669873018}
+2021/01/28 10:21:37 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.UpdateArticle err : [Error 1054: Unknown column 'id_del' in 'where clause']","time":1611800497772798526}
+2021/01/28 10:22:44 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.UpdateArticle err : [sql: expected 8 arguments, got 9]","time":1611800564387624103}
+2021/01/28 10:24:40 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.UpdateArticle err : [sql: expected 8 arguments, got 9]","time":1611800680954961615}
+2021/01/28 10:38:46 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.UpdateArticle err : [sql: expected 8 arguments, got 9]","time":1611801526676453478}
+2021/01/28 10:44:29 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.GetArticleList err : [Error 1146: Table 'blog_service.blog_article_tagAS' doesn't exist]","time":1611801869310814278}
+2021/01/28 10:45:07 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.GetArticleList err : [Error 1054: Unknown column 'ar.is_delete' in 'where clause']","time":1611801907274751574}
+2021/01/28 10:45:22 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.GetArticleList err : [Error 1146: Table 'blog_service.blog_article_tagAS' doesn't exist]","time":1611801922301796603}
+2021/01/28 10:55:03 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.GetArticleList err : [Error 1146: Table 'blog_service.blog_article_tagAS' doesn't exist]","time":1611802503646086026}
+2021/01/28 10:56:14 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.GetArticleList err : [sql: expected 7 destination arguments in Scan, not 6]","time":1611802574279536658}
+2021/01/28 10:56:55 {"callers":["/home/wby/fishblog/main.go: 27 \u0026{{}}"],"level":"error","message":"svc.GetArticleList err : [sql: expected 7 destination arguments in Scan, not 6]","time":1611802615450713331}
