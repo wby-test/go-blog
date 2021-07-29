@@ -1,14 +1,15 @@
 package model
 
 import (
+	"errors"
 	"github.com/fishblog/pkg/app"
 	"github.com/jinzhu/gorm"
 )
 
 type Tag struct {
 	*Model
-	Name 		string	`json:"name"`
-	State		uint8	`json:"state"`
+	Name  string `json:"name"`
+	State uint8  `json:"state"`
 }
 
 func (t Tag) TableName() string {
@@ -16,8 +17,8 @@ func (t Tag) TableName() string {
 }
 
 type TagSwagger struct {
-	List   []*Tag
-	Pager   *app.Pager
+	List  []*Tag
+	Pager *app.Pager
 }
 
 func (t Tag) Count(db *gorm.DB) (int, error) {
@@ -35,7 +36,7 @@ func (t Tag) Count(db *gorm.DB) (int, error) {
 func (t Tag) List(db *gorm.DB, pageOffset, pageSize int) ([]*Tag, error) {
 	var tags []*Tag
 	var err error
-	if pageOffset > 0 && pageSize >0 {
+	if pageOffset > 0 && pageSize > 0 {
 		db = db.Offset(pageOffset).Limit(pageSize)
 	}
 
@@ -50,7 +51,7 @@ func (t Tag) List(db *gorm.DB, pageOffset, pageSize int) ([]*Tag, error) {
 	return tags, nil
 }
 
-func (t Tag)ListByIDs(db *gorm.DB, ids []uint32) ([]*Tag, error) {
+func (t Tag) ListByIDs(db *gorm.DB, ids []uint32) ([]*Tag, error) {
 	var tags []*Tag
 	db = db.Where("state = ? AND is_del = ?", t.State, 0)
 	err := db.Where("id IN (?)", ids).Find(&tags).Error
@@ -60,12 +61,16 @@ func (t Tag)ListByIDs(db *gorm.DB, ids []uint32) ([]*Tag, error) {
 	return tags, nil
 }
 
-func (t Tag) Get(db *gorm.DB) (Tag, error) {
-	var tag Tag
+func (t Tag) Get(db *gorm.DB) (*Tag, error) {
+	tag := new(Tag)
 	db = db.Where("id = ? AND is_del = ? AND state = ?", t.ID, 0, t.State)
 	err := db.Find(&tag).Error
 	if err != nil && err != gorm.ErrRecordNotFound {
 		return tag, err
+	}
+
+	if err == gorm.ErrRecordNotFound {
+		return nil, errors.New("未查询到记录")
 	}
 
 	return tag, nil

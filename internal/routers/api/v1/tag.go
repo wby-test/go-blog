@@ -6,11 +6,11 @@ import (
 	"github.com/fishblog/pkg/app"
 	"github.com/fishblog/pkg/convert"
 	"github.com/fishblog/pkg/errcode"
+	"github.com/fishblog/pkg/resp"
 	"github.com/gin-gonic/gin"
 )
 
 type Tag struct {
-
 }
 
 func NewTag() Tag {
@@ -19,6 +19,7 @@ func NewTag() Tag {
 
 // @Summary 获取单个标签
 // @Produce  json
+// @param id query int true "标签ID" maxlength(10)
 // @Param name query string false "标签名称" maxlength(100)
 // @Param state query int false "状态" Enums(0, 1) default(1)
 // @Param page query int false "页码"
@@ -28,7 +29,23 @@ func NewTag() Tag {
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/tags [get]
 func (t Tag) Get(c *gin.Context) {
-
+	param := service.TagRequest{}
+	response := app.NewResponse(c)
+	valid, errInfo := app.BindAndValid(c, &param)
+	if !valid {
+		global.Logger.Error("app.BindAndValid errs: %v", errInfo)
+		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errInfo.Errors()...))
+		return
+	}
+	svc := service.New(c.Request.Context())
+	tag, err := svc.GetTag(&param)
+	// 数据库没有相关数据是否应该让客户知道？？
+	if err != nil {
+		global.Logger.Errorf("svc.Get err: %v", err)
+		response.ToErrorResponse(errcode.ErrorGetTagListFail)
+		return
+	}
+	response.ToResponse(tag)
 }
 
 // @Summary 获取多个标签
@@ -48,16 +65,17 @@ func (t Tag) List(c *gin.Context) {
 	if !valid {
 		global.Logger.Error("app.BindAndValid errs: %v", errs)
 		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errs.Errors()...))
+		return
 	}
 
 	svc := service.New(c.Request.Context())
 	pager := app.Pager{
-			Page: app.GetPage(c),
-			PageSize: app.GetPageSize(c),
-		}
+		Page:     app.GetPage(c),
+		PageSize: app.GetPageSize(c),
+	}
 
 	totalRaw, err := svc.CountTag(&service.CountTagRequest{
-		Name: param.Name,
+		Name:  param.Name,
 		State: param.State,
 	})
 	if err != nil {
@@ -74,7 +92,6 @@ func (t Tag) List(c *gin.Context) {
 	}
 
 	response.ToResponseList(tags, totalRaw)
-	return
 }
 
 // @Summary 新增标签
@@ -93,6 +110,7 @@ func (t Tag) Create(c *gin.Context) {
 	if !valid {
 		global.Logger.Error("app.BindAndValid errs: %v", errs)
 		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errs.Errors()...))
+		return
 	}
 
 	svc := service.New(c.Request.Context())
@@ -103,8 +121,7 @@ func (t Tag) Create(c *gin.Context) {
 		return
 	}
 
-	response.ToResponse(gin.H{})
-	return
+	response.ToResponse(resp.RespNoData)
 }
 
 // @Summary 更新标签
@@ -124,6 +141,7 @@ func (t Tag) Update(c *gin.Context) {
 	if !valid {
 		global.Logger.Error("app.BindAndValid errs: %v", errs)
 		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errs.Errors()...))
+		return
 	}
 
 	svc := service.New(c.Request.Context())
@@ -134,10 +152,8 @@ func (t Tag) Update(c *gin.Context) {
 		return
 	}
 
-	response.ToResponse(gin.H{})
-	return
+	response.ToResponse(resp.RespNoData)
 }
-
 
 // @Summary 删除标签
 // @Produce json
@@ -153,6 +169,7 @@ func (t Tag) Delete(c *gin.Context) {
 	if !valid {
 		global.Logger.Error("app.BindAndValid errs: %v", errs)
 		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errs.Errors()...))
+		return
 	}
 
 	svc := service.New(c)
@@ -162,6 +179,5 @@ func (t Tag) Delete(c *gin.Context) {
 		response.ToErrorResponse(errcode.ErrorDeleteTagFail)
 	}
 
-	response.ToResponse(gin.H{})
-	return
+	response.ToResponse(resp.RespNoData)
 }

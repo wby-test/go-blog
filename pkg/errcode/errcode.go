@@ -6,8 +6,8 @@ import (
 )
 
 type Error struct {
-	code int `json:"code"`
-	msg  string `json:"msg"`
+	code    int      `json:"code"`
+	msg     string   `json:"msg"`
 	details []string `json:"details"`
 }
 
@@ -37,7 +37,7 @@ func (e *Error) Msgf(args []interface{}) string {
 	return fmt.Sprintf(e.msg, args...)
 }
 
-func (e *Error) Details()[]string {
+func (e *Error) Details() []string {
 	return e.details
 }
 

@@ -19,8 +19,5 @@ func NewSetting() (*Setting, error) {
 	if err != nil {
 		return nil, err
 	}
-	return &Setting{vp},nil
+	return &Setting{vp}, nil
 }
-
-
-

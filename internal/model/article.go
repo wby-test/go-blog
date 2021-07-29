@@ -7,26 +7,26 @@ import (
 
 type Article struct {
 	*Model
-	Title 			string `json:"title"`
-	Desc 			string `json:"desc"`
-	Content			string `json:"content"`
-	CoverImageUrl	string `json:"cover_image_url"`
-	State 			uint8 `json:"state"`
+	Title         string `json:"title"`
+	Desc          string `json:"desc"`
+	Content       string `json:"content"`
+	CoverImageUrl string `json:"cover_image_url"`
+	State         uint8  `json:"state"`
 }
 
 type ArticleRow struct {
-	ArticleID    	uint32
-	TagID			uint32
-	TagName			string
-	ArticleTitle	string
-	ArticleDesc		string
-	CoverImageUrl   string
-	Content			string
+	ArticleID     uint32
+	TagID         uint32
+	TagName       string
+	ArticleTitle  string
+	ArticleDesc   string
+	CoverImageUrl string
+	Content       string
 }
 
 type ArticleSwagger struct {
 	List  []*Article
-	Pager   *app.Pager
+	Pager *app.Pager
 }
 
 func (a Article) TableName() string {
@@ -41,13 +41,12 @@ func (a Article) Create(db *gorm.DB) (*Article, error) {
 }
 
 func (a Article) Update(db *gorm.DB, values interface{}) error {
-	return  db.Model(&a).Where("id = ? AND is_del = ?", a.ID, 0).Update(values).Error
+	return db.Model(&a).Where("id = ? AND is_del = ?", a.ID, 0).Update(values).Error
 }
 
 func (a Article) Delete(db *gorm.DB) error {
 	return db.Where("id = ? AND is_del = ?", a.ID, 0).Delete(&a).Error
 }
-
 
 func (a Article) Count(db *gorm.DB) (int, error) {
 	var count int
@@ -76,7 +75,7 @@ func (a Article) Get(db *gorm.DB) (Article, error) {
 //直接查询文章列表表不就可以吗?? no, blog_article no tag_id
 func (a Article) CountByTagID(db *gorm.DB, tagID uint32) (int, error) {
 	var count int
-	err := db.Table(ArticleTag{}.TableName() + " AS at").
+	err := db.Table(ArticleTag{}.TableName()+" AS at").
 		Joins("LEFT JOIN `"+Tag{}.TableName()+"`AS t ON at.tag_id = t.id").
 		Joins("LEFT JOIN `"+Article{}.TableName()+"` AS ar ON at.article_id = ar.id").
 		Where("at.`tag_id` = ? AND ar.state = ? AND ar.is_del = ?", tagID, a.State, 0).
@@ -88,7 +87,7 @@ func (a Article) CountByTagID(db *gorm.DB, tagID uint32) (int, error) {
 	return count, nil
 }
 
-func (a Article) List(db *gorm.DB, pageOffset, pageSize int) ([]*Article, error ) {
+func (a Article) List(db *gorm.DB, pageOffset, pageSize int) ([]*Article, error) {
 	var articles []*Article
 	var err error
 
@@ -108,7 +107,7 @@ func (a Article) List(db *gorm.DB, pageOffset, pageSize int) ([]*Article, error 
 }
 
 // conjunctive query / join query
-func (a Article) ListByTagID(db *gorm.DB, tagID uint32, pageOffset, pageSize int) ([]*ArticleRow, error){
+func (a Article) ListByTagID(db *gorm.DB, tagID uint32, pageOffset, pageSize int) ([]*ArticleRow, error) {
 	fields := []string{"ar.id AS article_id", "ar.title AS article_title", "ar.desc AS article_desc", "ar.cover_image_url", "ar.content"}
 	fields = append(fields, []string{"t.id AS tag_id", "t.name AS tag_name"}...)
 
@@ -137,11 +136,3 @@ func (a Article) ListByTagID(db *gorm.DB, tagID uint32, pageOffset, pageSize int
 
 	return articles, nil
 }
-
-
-
-
-
-
-
-

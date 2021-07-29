@@ -8,8 +8,8 @@ import (
 	"github.com/go-playground/locales/zh_Hant_TW"
 	"github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
-	en_translation"github.com/go-playground/validator/v10/translations/en"
-	zh_translation"github.com/go-playground/validator/v10/translations/zh"
+	en_translation "github.com/go-playground/validator/v10/translations/en"
+	zh_translation "github.com/go-playground/validator/v10/translations/zh"
 )
 
 func Translations() gin.HandlerFunc {

@@ -38,11 +38,11 @@ func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routers.NewRouter()
 	s := &http.Server{
-		Addr : ":" + global.ServerSetting.HttpPort,
-		Handler: router,
-		ReadTimeout: global.ServerSetting.ReadTimeout,
-		WriteTimeout: global.ServerSetting.WriteTimeout,
-		MaxHeaderBytes: 1<<10,
+		Addr:           ":" + global.ServerSetting.HttpPort,
+		Handler:        router,
+		ReadTimeout:    global.ServerSetting.ReadTimeout,
+		WriteTimeout:   global.ServerSetting.WriteTimeout,
+		MaxHeaderBytes: 1 << 10,
 	}
 	//测试日志模块
 	//global.Logger.Infof("%s: go programming-tour-book/%s", "eddycjy", "blog-service")
@@ -89,13 +89,12 @@ func setupDBEngine() error {
 }
 
 func setupLogger() error {
-	global.Logger = logger.NewLogger(&lumberjack.Logger{Filename: global.AppSetting.LogSavePath+ "/" +
+	global.Logger = logger.NewLogger(&lumberjack.Logger{Filename: global.AppSetting.LogSavePath + "/" +
 		global.AppSetting.LogFileName + global.AppSetting.LogFileExt,
-	MaxSize: 600,
-	MaxAge:  10,
-	LocalTime: true,
+		MaxSize:   600,
+		MaxAge:    10,
+		LocalTime: true,
 	}, "", log.LstdFlags).WithCaller(2)
 
 	return nil
 }
-

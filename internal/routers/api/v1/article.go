@@ -6,11 +6,11 @@ import (
 	"github.com/fishblog/pkg/app"
 	"github.com/fishblog/pkg/convert"
 	"github.com/fishblog/pkg/errcode"
+	"github.com/fishblog/pkg/resp"
 	"github.com/gin-gonic/gin"
 )
 
 type Article struct {
-	
 }
 
 func NewArticle() Article {
@@ -24,7 +24,7 @@ func NewArticle() Article {
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/articles/{id} [get]
-func (a  Article) Get(c *gin.Context) {
+func (a Article) Get(c *gin.Context) {
 	param := service.ArticleRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
 	response := app.NewResponse(c)
 	valid, errs := app.BindAndValid(c, &param)
@@ -56,7 +56,7 @@ func (a  Article) Get(c *gin.Context) {
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/articles [get]
-func (a  Article) List(c *gin.Context) {
+func (a Article) List(c *gin.Context) {
 	param := service.ArticleListRequest{}
 	response := app.NewResponse(c)
 	valid, errs := app.BindAndValid(c, &param)
@@ -67,7 +67,7 @@ func (a  Article) List(c *gin.Context) {
 	}
 
 	svc := service.New(c.Request.Context())
-	page := app.Pager{Page:app.GetPage(c), PageSize: app.GetPageSize(c)}
+	page := app.Pager{Page: app.GetPage(c), PageSize: app.GetPageSize(c)}
 	articles, totalRows, err := svc.GetArticleList(&param, &page)
 	if err != nil {
 		global.Logger.Errorf("svc.GetArticleList err : %v", err)
@@ -92,7 +92,7 @@ func (a  Article) List(c *gin.Context) {
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/articles [post]
-func (a  Article) Create(c *gin.Context) {
+func (a Article) Create(c *gin.Context) {
 	param := service.CreateArticleRequest{}
 	response := app.NewResponse(c)
 	valid, errs := app.BindAndValid(c, &param)
@@ -110,7 +110,9 @@ func (a  Article) Create(c *gin.Context) {
 		return
 	}
 
-	response.ToResponse(gin.H{})
+	Resp := resp.RespNoData
+	Resp["data"] = 1
+	response.ToResponse(Resp)
 }
 
 // @Summary 更新文章
@@ -125,7 +127,7 @@ func (a  Article) Create(c *gin.Context) {
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/articles/{id} [put]
-func (a  Article) Update(c *gin.Context) {
+func (a Article) Update(c *gin.Context) {
 	param := service.UpdateArticleRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
 	response := app.NewResponse(c)
 	valid, errs := app.BindAndValid(c, &param)
@@ -143,7 +145,7 @@ func (a  Article) Update(c *gin.Context) {
 		return
 	}
 
-	response.ToResponse(gin.H{})
+	response.ToResponse(resp.RespNoData)
 }
 
 // @Summary 删除文章
@@ -153,7 +155,7 @@ func (a  Article) Update(c *gin.Context) {
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/articles/{id} [delete]
-func (a  Article) Delete(c *gin.Context) {
+func (a Article) Delete(c *gin.Context) {
 	param := service.DeleteArticleRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
 	response := app.NewResponse(c)
 	valid, errs := app.BindAndValid(c, &param)
@@ -171,5 +173,5 @@ func (a  Article) Delete(c *gin.Context) {
 		return
 	}
 
-	response.ToResponse(gin.H{})
+	response.ToResponse(resp.RespNoData)
 }

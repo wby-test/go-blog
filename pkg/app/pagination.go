@@ -7,7 +7,7 @@ import (
 )
 
 func GetPage(c *gin.Context) int {
-	page :=  convert.StrTo(c.Query("page")).MustInt()
+	page := convert.StrTo(c.Query("page")).MustInt()
 	if page <= 0 {
 		return 1
 	}
@@ -35,4 +35,3 @@ func GetPageOffset(page, pageSize int) int {
 
 	return result
 }
-

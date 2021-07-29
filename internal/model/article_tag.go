@@ -4,8 +4,8 @@ import "github.com/jinzhu/gorm"
 
 type ArticleTag struct {
 	*Model
-	TagId 		uint32 `json:"tag_id"`
-	ArticleID   uint32 `json:article_id`
+	TagId     uint32 `json:"tag_id"`
+	ArticleID uint32 `json:article_id`
 }
 
 func (a ArticleTag) TableName() string {
@@ -56,7 +56,7 @@ func (a ArticleTag) Delete(db *gorm.DB) error {
 	return db.Where("id = ? AND is_del = ?", a.ID, 0).Delete(&a).Error
 }
 
-func(a ArticleTag) DeleteOne(db *gorm.DB) error {
+func (a ArticleTag) DeleteOne(db *gorm.DB) error {
 	return db.Where("article_id = ? AND is_del = ?", a.ArticleID, 0).
 		Delete(&a).Limit(1).Error
 }

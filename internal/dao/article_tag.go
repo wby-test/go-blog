@@ -25,7 +25,7 @@ func (d *Dao) GetArticleTagListByAID(articleIDs []uint32) ([]*model.ArticleTag, 
 func (d *Dao) CreateArticleTag(articleID, tagID uint32, createdBy string) error {
 	articleTag := model.ArticleTag{
 		ArticleID: articleID,
-		TagId: tagID,
+		TagId:     tagID,
 		Model: &model.Model{
 			CreatedBy: createdBy,
 		},
@@ -34,10 +34,9 @@ func (d *Dao) CreateArticleTag(articleID, tagID uint32, createdBy string) error 
 	return articleTag.Create(d.engine)
 }
 
-
-func(d *Dao) UpdateArticleTag(articleID, tagId uint32, modifiedBy string) error {
+func (d *Dao) UpdateArticleTag(articleID, tagId uint32, modifiedBy string) error {
 	articleTag := model.ArticleTag{ArticleID: articleID}
-	values := make(map[string]interface{},2)
+	values := make(map[string]interface{}, 2)
 	values["article_id"] = articleID
 	values["tag_id"] = tagId
 	if modifiedBy != "" {
@@ -54,6 +53,3 @@ func (d *Dao) DeleteArticleTag(articleID uint32) error {
 
 	return articleTag.DeleteOne(d.engine)
 }
-
-
-

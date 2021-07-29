@@ -9,12 +9,22 @@ App:
   LogSavePath: storage/logs
   LogFileName: app
   LogFileExt: .log
+  UploadSavePath: storage/uploads
+  UploadServerUrl: http://127.0.0.1:8000/static
+  UploadImageMaxSize: 5  # MB
+  UploadImageAllowExts:
+    - .jpg
+    - .jpeg
+    - .png
 DataBase:
   DBtype: mysql
-  UserName: goweb
-  Password: 123456
-  Host: 192.168.3.14:3306
-  DBName: blog_service
+  UserName: root
+  #Password: 123456
+  #Host: 192.168.3.14:3306
+  Password: 15937
+  Host: 120.194.107.145:4501
+  #DBName: blog_service
+  DBName: blog
   TablePrefix: blog_
   Charset: utf8
   ParseTime: true

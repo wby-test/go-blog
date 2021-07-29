@@ -6,26 +6,26 @@ import (
 )
 
 type Article struct {
-	ID 				uint32 `json:"id"`
-	TagID			uint32 `json:"tag_id"`
-	IsDel			uint8  `json:"is_del"`
-	Title 			string `json:"title"`
-	Desc 			string `json:"desc"`
-	Content			string `json:"content"`
-	CoverImageUrl	string `json:"cover_image_url"`
-	CreatedBy		string `json:"created_by"`
-	ModifiedBy		string `json:"modified_by"`
-	State 			uint8 `json:"state"`
+	ID            uint32 `json:"id"`
+	TagID         uint32 `json:"tag_id"`
+	IsDel         uint8  `json:"is_del"`
+	Title         string `json:"title"`
+	Desc          string `json:"desc"`
+	Content       string `json:"content"`
+	CoverImageUrl string `json:"cover_image_url"`
+	CreatedBy     string `json:"created_by"`
+	ModifiedBy    string `json:"modified_by"`
+	State         uint8  `json:"state"`
 }
 
 func (d *Dao) CreateArticle(param *Article) (*model.Article, error) {
 	article := model.Article{
-		Title: param.Title,
-		Desc: param.Desc,
-		Content: param.Content,
+		Title:         param.Title,
+		Desc:          param.Desc,
+		Content:       param.Content,
 		CoverImageUrl: param.CoverImageUrl,
-		State: param.State,
-		Model:&model.Model{CreatedBy: param.CreatedBy},
+		State:         param.State,
+		Model:         &model.Model{CreatedBy: param.CreatedBy},
 	}
 
 	return article.Create(d.engine)
@@ -33,11 +33,11 @@ func (d *Dao) CreateArticle(param *Article) (*model.Article, error) {
 
 func (d *Dao) UpdateArticle(param *Article) error {
 	article := model.Article{
-		Model:&model.Model{ID:param.ID},
+		Model: &model.Model{ID: param.ID},
 	}
-	values := map[string]interface{} {
-		"modified_by":param.ModifiedBy,
-		"state":param.State,
+	values := map[string]interface{}{
+		"modified_by": param.ModifiedBy,
+		"state":       param.State,
 	}
 	if param.Title != "" {
 		values["title"] = param.Title
@@ -57,12 +57,12 @@ func (d *Dao) UpdateArticle(param *Article) error {
 
 func (d *Dao) DeleteArticle(id uint32) error {
 	article := model.Article{
-		Model: &model.Model{ID:id},
+		Model: &model.Model{ID: id},
 	}
 	return article.Delete(d.engine)
 }
 
-func (d *Dao) GetArticle(id uint32, state uint8 ) (model.Article, error) {
+func (d *Dao) GetArticle(id uint32, state uint8) (model.Article, error) {
 	article := model.Article{
 		State: state,
 		Model: &model.Model{
@@ -83,5 +83,5 @@ func (d *Dao) CountArticleListByTID(tid uint32, state uint8) (int, error) {
 func (d *Dao) GetArticleListByTID(tid uint32, state uint8, page, pageSize int) ([]*model.ArticleRow, error) {
 	article := model.Article{State: state}
 
-	return article.ListByTagID(d.engine, tid, app.GetPageOffset(page,pageSize), pageSize)
+	return article.ListByTagID(d.engine, tid, app.GetPageOffset(page, pageSize), pageSize)
 }

@@ -16,17 +16,17 @@ const (
 )
 
 type Model struct {
-	ID 			uint32 `gorm:"primary_key" json:"id"`
-	CreatedBy	string `json:"created_by"`
-	ModifiedBy	string `json:"modified_by"`
-	CreatedOn	uint32 `json:"created_on"`
-	ModifiedOn	uint32 `json:"modified_on"`
-	DeletedOn	uint32 `json:"deleted_on"`
-	IsDel		uint8  `json:"is_del"`
+	ID         uint32 `gorm:"primary_key" json:"id"`
+	CreatedBy  string `json:"created_by"`
+	ModifiedBy string `json:"modified_by"`
+	CreatedOn  uint32 `json:"created_on"`
+	ModifiedOn uint32 `json:"modified_on"`
+	DeletedOn  uint32 `json:"deleted_on"`
+	IsDel      uint8  `json:"is_del"`
 }
 
 func NewDBEngine(dbSettings *setting.DatabaseSettings) (*gorm.DB, error) {
-	db, err := gorm.Open(dbSettings.DBType, fmt.Sprintf("%s:%s@tcp(%s)/%s?" +
+	db, err := gorm.Open(dbSettings.DBType, fmt.Sprintf("%s:%s@tcp(%s)/%s?"+
 		"charset=%s&parseTime=%t&loc=Local",
 		dbSettings.UserName,
 		dbSettings.Password,
@@ -99,7 +99,7 @@ func deleteCallback(scope *gorm.Scope) {
 				scope.AddToVars(1),
 				addExtraSpaceIfExist(scope.CombinedConditionSql()),
 				addExtraSpaceIfExist(extraOption),
-				)).Exec()
+			)).Exec()
 		} else {
 			scope.Raw(fmt.Sprintf(
 				"DELETE FROM %v%v%v",
@@ -116,5 +116,3 @@ func addExtraSpaceIfExist(str string) string {
 	}
 	return ""
 }
-
-

@@ -5,7 +5,7 @@ import (
 	"github.com/fishblog/pkg/app"
 )
 
-func (d *Dao) GetTag(id uint32, state uint8 ) (model.Tag, error) {
+func (d *Dao) GetTag(id uint32, state uint8) (*model.Tag, error) {
 	tag := model.Tag{
 		State: state,
 		Model: &model.Model{
@@ -17,7 +17,7 @@ func (d *Dao) GetTag(id uint32, state uint8 ) (model.Tag, error) {
 
 func (d *Dao) GetTagList(name string, state uint8, page, pageSize int) ([]*model.Tag, error) {
 	tag := model.Tag{
-		Name: name,
+		Name:  name,
 		State: state,
 	}
 	pageOffset := app.GetPageOffset(page, pageSize)
@@ -33,7 +33,7 @@ func (d *Dao) GetTagListByIDs(ids []uint32, state uint8) ([]*model.Tag, error) {
 
 func (d *Dao) CountTag(name string, state uint8) (int, error) {
 	tag := model.Tag{
-		Name: name,
+		Name:  name,
 		State: state,
 	}
 	return tag.Count(d.engine)
@@ -41,26 +41,26 @@ func (d *Dao) CountTag(name string, state uint8) (int, error) {
 
 func (d *Dao) CreateTag(name string, state uint8, createBy string) error {
 	tag := model.Tag{
-		Name: name,
+		Name:  name,
 		State: state,
-		Model:&model.Model{
+		Model: &model.Model{
 			CreatedBy: createBy,
 		},
 	}
 	return tag.Create(d.engine)
 }
 
-func (d *Dao)  UpdateTag(id uint32, name string, state uint8, modifiedBy string) error {
+func (d *Dao) UpdateTag(id uint32, name string, state uint8, modifiedBy string) error {
 	tag := model.Tag{
 		Model: &model.Model{
-			ID:id,
+			ID: id,
 		},
 	}
-	values := map[string]interface{} {
-		"state": state,
+	values := map[string]interface{}{
+		"state":       state,
 		"modified_by": modifiedBy,
 	}
-	if name =="" {
+	if name == "" {
 		values["name"] = name
 	}
 
@@ -69,7 +69,7 @@ func (d *Dao)  UpdateTag(id uint32, name string, state uint8, modifiedBy string)
 
 func (d *Dao) DeleteTag(id uint32) error {
 	tag := model.Tag{
-		Model:&model.Model{ID: id},
+		Model: &model.Model{ID: id},
 	}
 
 	return tag.Delete(d.engine)
